@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,6 +11,506 @@
     />
   </head>
   <body>
+    <!-- Email Compose Modal -->
+    <div id="emailModal" class="email-modal">
+      <div class="email-modal-content">
+        <div class="email-modal-header">
+          <h2>Compose Email</h2>
+          <button class="email-modal-close">&times;</button>
+        </div>
+        <form id="emailComposeForm" class="email-compose-form">
+          <div class="email-form-group">
+            <label for="email-to">To:</label>
+            <input
+              type="email"
+              id="email-to"
+              name="to"
+              value="dassubhankar8114@gmail.com"
+              readonly
+            />
+          </div>
+          <div class="email-form-group">
+            <label for="email-from">From:</label>
+            <input
+              type="email"
+              id="email-from"
+              name="from"
+              placeholder="Your email address"
+              required
+            />
+          </div>
+          <div class="email-form-group">
+            <label for="email-subject">Subject:</label>
+            <input
+              type="text"
+              id="email-subject"
+              name="subject"
+              placeholder="Enter subject"
+              required
+            />
+          </div>
+          <div class="email-form-group">
+            <label for="email-body">Message:</label>
+            <textarea
+              id="email-body"
+              name="body"
+              placeholder="Write your message here..."
+              rows="8"
+              required
+            ></textarea>
+          </div>
+          <div class="email-modal-actions">
+            <button type="submit" class="btn btn-primary">Send Email</button>
+            <button type="button" class="btn btn-secondary email-modal-cancel">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Employee Wellness Program Modal -->
+    <div id="wellnessModal" class="project-modal">
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h2>Employee Wellness Program</h2>
+          <button class="project-modal-close">&times;</button>
+        </div>
+        <div class="project-modal-body">
+          <div class="project-modal-image">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Integrated Wellness & Benefits Management System</h3>
+          <p class="project-description">
+            A comprehensive employee wellness program designed to promote
+            physical health, mental wellness, and work-life balance across the
+            organization. This integrated platform manages wellness initiatives,
+            tracks employee engagement, and provides personalized health
+            recommendations.
+          </p>
+
+          <div class="features-section">
+            <h4><i class="fas fa-check-circle"></i> Key Features</h4>
+            <ul class="features-list">
+              <li>
+                <strong>Health Tracking:</strong> Monitor fitness activities,
+                steps, and health metrics
+              </li>
+              <li>
+                <strong>Mental Wellness:</strong> Access to meditation, stress
+                management, and counseling resources
+              </li>
+              <li>
+                <strong>Wellness Challenges:</strong> Participate in
+                company-wide fitness and wellness challenges
+              </li>
+              <li>
+                <strong>Benefits Management:</strong> Comprehensive health
+                insurance, dental, vision, and wellness benefits
+              </li>
+              <li>
+                <strong>Work-Life Balance:</strong> Tools for managing workload,
+                vacation planning, and time-off tracking
+              </li>
+              <li>
+                <strong>Wellness Analytics:</strong> Dashboard showing wellness
+                metrics and ROI on wellness initiatives
+              </li>
+              <li>
+                <strong>Personalized Recommendations:</strong> AI-powered health
+                tips and wellness suggestions
+              </li>
+              <li>
+                <strong>Fitness Programs:</strong> Gym partnerships, yoga
+                classes, and fitness group activities
+              </li>
+              <li>
+                <strong>Nutrition Guidance:</strong> Healthy eating tips, meal
+                planning, and dietary recommendations
+              </li>
+              <li>
+                <strong>Mental Health Support:</strong> EAP (Employee Assistance
+                Program) and counseling services
+              </li>
+            </ul>
+          </div>
+
+          <div class="benefits-section">
+            <h4><i class="fas fa-star"></i> Benefits</h4>
+            <ul class="benefits-list">
+              <li>Improved employee health and reduced healthcare costs</li>
+              <li>Increased productivity and job satisfaction</li>
+              <li>Lower absenteeism and improved attendance</li>
+              <li>Enhanced employee retention and loyalty</li>
+              <li>Better work-life balance and reduced burnout</li>
+              <li>Stronger company culture and team engagement</li>
+            </ul>
+          </div>
+
+          <div class="tech-stack">
+            <h4><i class="fas fa-code"></i> Technology Stack</h4>
+            <div class="tech-tags">
+              <span>Health APIs</span>
+              <span>Mobile App</span>
+              <span>Dashboard</span>
+              <span>Analytics</span>
+              <span>Cloud Infrastructure</span>
+              <span>Real-time Tracking</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-modal-footer">
+          <button class="btn btn-secondary project-modal-close-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orion HR Management System Modal -->
+    <div id="hrmsModal" class="project-modal">
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h2>Orion HR Management System</h2>
+          <button class="project-modal-close">&times;</button>
+        </div>
+        <div class="project-modal-body">
+          <div
+            class="project-modal-image"
+            style="background: linear-gradient(135deg, #1f6feb, #0a84ff)"
+          >
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>Comprehensive HR Management Solution</h3>
+          <p class="project-description">
+            A robust enterprise-level HR management system designed for Orion
+            Company. This all-in-one platform streamlines HR operations, manages
+            employee data, handles payroll, and enables data-driven HR
+            decisions.
+          </p>
+          <div class="features-section">
+            <h4><i class="fas fa-check-circle"></i> Core Modules</h4>
+            <ul class="features-list">
+              <li>
+                <strong>Employee Management:</strong> Centralized employee
+                database with complete profile management
+              </li>
+              <li>
+                <strong>Recruitment Tracking:</strong> Job posting, application
+                tracking, and candidate management
+              </li>
+              <li>
+                <strong>Payroll Processing:</strong> Automated salary
+                calculation, tax management, and payment processing
+              </li>
+              <li>
+                <strong>Performance Management:</strong> Goal setting,
+                appraisals, and performance tracking
+              </li>
+              <li>
+                <strong>Attendance Management:</strong> Real-time attendance
+                tracking and leave management
+              </li>
+              <li>
+                <strong>Reporting & Analytics:</strong> Comprehensive HR metrics
+                and dashboard reporting
+              </li>
+            </ul>
+          </div>
+          <div class="tech-stack">
+            <h4><i class="fas fa-code"></i> Technology Stack</h4>
+            <div class="tech-tags">
+              <span>SAP SuccessFactors</span>
+              <span>Database Management</span>
+              <span>REST APIs</span>
+              <span>Cloud</span>
+              <span>Security</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-modal-footer">
+          <button class="btn btn-secondary project-modal-close-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Recruitment Portal Modal -->
+    <div id="recruitmentModal" class="project-modal">
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h2>Employee Recruitment Portal</h2>
+          <button class="project-modal-close">&times;</button>
+        </div>
+        <div class="project-modal-body">
+          <div
+            class="project-modal-image"
+            style="background: linear-gradient(135deg, #0a84ff, #5ea1ff)"
+          >
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Integrated Talent Acquisition Platform</h3>
+          <p class="project-description">
+            An advanced recruitment portal that streamlines the entire hiring
+            process. From job posting to candidate selection, this platform
+            enables efficient talent acquisition and management for Orion
+            Company.
+          </p>
+          <div class="features-section">
+            <h4><i class="fas fa-check-circle"></i> Key Features</h4>
+            <ul class="features-list">
+              <li>
+                <strong>Job Posting:</strong> Easy job posting across multiple
+                channels
+              </li>
+              <li>
+                <strong>Applicant Tracking:</strong> Track candidates through
+                the entire recruitment pipeline
+              </li>
+              <li>
+                <strong>Resume Parsing:</strong> Automated resume analysis and
+                candidate scoring
+              </li>
+              <li>
+                <strong>Interview Scheduling:</strong> Automated interview
+                coordination and scheduling
+              </li>
+              <li>
+                <strong>Candidate Management:</strong> Comprehensive candidate
+                database and communication tools
+              </li>
+              <li>
+                <strong>Hiring Analytics:</strong> Track recruitment metrics and
+                improve hiring efficiency
+              </li>
+            </ul>
+          </div>
+          <div class="tech-stack">
+            <h4><i class="fas fa-code"></i> Technology Stack</h4>
+            <div class="tech-tags">
+              <span>ATS System</span>
+              <span>AI Matching</span>
+              <span>Email Integration</span>
+              <span>Mobile App</span>
+              <span>Analytics</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-modal-footer">
+          <button class="btn btn-secondary project-modal-close-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Analytics Dashboard Modal -->
+    <div id="analyticsModal" class="project-modal">
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h2>Employee Analytics Dashboard</h2>
+          <button class="project-modal-close">&times;</button>
+        </div>
+        <div class="project-modal-body">
+          <div
+            class="project-modal-image"
+            style="background: linear-gradient(135deg, #5ea1ff, #1f6feb)"
+          >
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3>Real-time HR Analytics & Insights</h3>
+          <p class="project-description">
+            An interactive analytics dashboard providing real-time visibility
+            into HR metrics and employee data. This platform enables data-driven
+            HR decisions through comprehensive visualization and reporting.
+          </p>
+          <div class="features-section">
+            <h4><i class="fas fa-check-circle"></i> Dashboards & Reports</h4>
+            <ul class="features-list">
+              <li>
+                <strong>Employee Turnover:</strong> Real-time turnover analysis
+                and attrition predictions
+              </li>
+              <li>
+                <strong>Engagement Metrics:</strong> Employee satisfaction and
+                engagement tracking
+              </li>
+              <li>
+                <strong>Performance Analytics:</strong> Department and
+                individual performance insights
+              </li>
+              <li>
+                <strong>Workforce Demographics:</strong> Age, gender,
+                department-wise workforce analysis
+              </li>
+              <li>
+                <strong>Custom Reports:</strong> Generate custom reports based
+                on business requirements
+              </li>
+              <li>
+                <strong>Predictive Analytics:</strong> Forecast future HR trends
+                and challenges
+              </li>
+            </ul>
+          </div>
+          <div class="tech-stack">
+            <h4><i class="fas fa-code"></i> Technology Stack</h4>
+            <div class="tech-tags">
+              <span>BI Tools</span>
+              <span>Data Visualization</span>
+              <span>Real-time Data</span>
+              <span>Machine Learning</span>
+              <span>Dashboard</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-modal-footer">
+          <button class="btn btn-secondary project-modal-close-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning & Development Platform Modal -->
+    <div id="lmsModal" class="project-modal">
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h2>Learning & Development Platform</h2>
+          <button class="project-modal-close">&times;</button>
+        </div>
+        <div class="project-modal-body">
+          <div
+            class="project-modal-image"
+            style="background: linear-gradient(135deg, #1f6feb, #0c1424)"
+          >
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Comprehensive Training & Development System</h3>
+          <p class="project-description">
+            A comprehensive Learning Management System (LMS) designed for
+            employee skill development and career progression. This platform
+            manages training programs, tracks learning progress, and supports
+            organizational development.
+          </p>
+          <div class="features-section">
+            <h4><i class="fas fa-check-circle"></i> Learning Features</h4>
+            <ul class="features-list">
+              <li>
+                <strong>Course Management:</strong> Create, manage, and deliver
+                online courses
+              </li>
+              <li>
+                <strong>Training Programs:</strong> Structured training paths
+                for different roles
+              </li>
+              <li>
+                <strong>Competency Mapping:</strong> Track skill development and
+                competencies
+              </li>
+              <li>
+                <strong>Career Progression:</strong> Plan employee career growth
+                and development
+              </li>
+              <li>
+                <strong>Certification Programs:</strong> Manage certifications
+                and skill validations
+              </li>
+              <li>
+                <strong>Learning Analytics:</strong> Track training
+                effectiveness and ROI
+              </li>
+            </ul>
+          </div>
+          <div class="tech-stack">
+            <h4><i class="fas fa-code"></i> Technology Stack</h4>
+            <div class="tech-tags">
+              <span>LMS Platform</span>
+              <span>Video Streaming</span>
+              <span>Quiz Engine</span>
+              <span>Certificate Generation</span>
+              <span>Progress Tracking</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-modal-footer">
+          <button class="btn btn-secondary project-modal-close-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Compliance Management Modal -->
+    <div id="complianceModal" class="project-modal">
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h2>HR Compliance Management</h2>
+          <button class="project-modal-close">&times;</button>
+        </div>
+        <div class="project-modal-body">
+          <div
+            class="project-modal-image"
+            style="background: linear-gradient(135deg, #0c1424, #1f6feb)"
+          >
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3>Automated Compliance & Policy Management</h3>
+          <p class="project-description">
+            An automated compliance management system ensuring adherence to
+            labor laws, organizational policies, and regulatory requirements.
+            This platform helps mitigate compliance risks and maintain audit
+            trails.
+          </p>
+          <div class="features-section">
+            <h4><i class="fas fa-check-circle"></i> Compliance Features</h4>
+            <ul class="features-list">
+              <li>
+                <strong>Policy Management:</strong> Centralized policy
+                repository and version control
+              </li>
+              <li>
+                <strong>Labor Law Compliance:</strong> Track and ensure
+                compliance with labor regulations
+              </li>
+              <li>
+                <strong>Audit Trails:</strong> Comprehensive logging of all HR
+                actions for audit purposes
+              </li>
+              <li>
+                <strong>Risk Management:</strong> Identify and mitigate
+                compliance risks
+              </li>
+              <li>
+                <strong>Document Management:</strong> Secure storage and
+                management of HR documents
+              </li>
+              <li>
+                <strong>Compliance Reporting:</strong> Generate compliance
+                reports for regulatory bodies
+              </li>
+            </ul>
+          </div>
+          <div class="tech-stack">
+            <h4><i class="fas fa-code"></i> Technology Stack</h4>
+            <div class="tech-tags">
+              <span>Document Management</span>
+              <span>Audit Logging</span>
+              <span>Compliance Engine</span>
+              <span>Encryption</span>
+              <span>Reporting</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-modal-footer">
+          <button class="btn btn-secondary project-modal-close-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="container">
@@ -183,7 +683,7 @@
                 <span>Payroll</span>
               </div>
               <div class="project-links">
-                <a href="#" class="link-btn">View Details</a>
+                <button class="link-btn" id="hrmsViewBtn">View Details</button>
               </div>
             </div>
           </div>
@@ -205,7 +705,7 @@
                 <span>Candidate Management</span>
               </div>
               <div class="project-links">
-                <a href="#" class="link-btn">View Details</a>
+                <button class="link-btn" id="recruitmentViewBtn">View Details</button>
               </div>
             </div>
           </div>
@@ -227,7 +727,7 @@
                 <span>Data Insights</span>
               </div>
               <div class="project-links">
-                <a href="#" class="link-btn">View Details</a>
+                <button class="link-btn" id="analyticsViewBtn">View Details</button>
               </div>
             </div>
           </div>
@@ -249,7 +749,7 @@
                 <span>LMS</span>
               </div>
               <div class="project-links">
-                <a href="#" class="link-btn">View Details</a>
+                <button class="link-btn" id="lmsViewBtn">View Details</button>
               </div>
             </div>
           </div>
@@ -271,7 +771,7 @@
                 <span>Employee Engagement</span>
               </div>
               <div class="project-links">
-                <a href="#" class="link-btn">View Details</a>
+                <button class="link-btn" id="wellnessViewBtn">View Details</button>
               </div>
             </div>
           </div>
@@ -293,12 +793,11 @@
                 <span>Regulations</span>
               </div>
               <div class="project-links">
-                <a href="#" class="link-btn">View Details</a>
+                <button class="link-btn" id="complianceViewBtn">View Details</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Contact Section -->
@@ -324,6 +823,19 @@
               <h3>Phone</h3>
               <p>
                 <a class="contact-link" href="tel:+918276011939"
+                  >+91 8276011939</a
+                >
+              </p>
+            </div>
+            <div class="info-item">
+              <i class="fab fa-whatsapp"></i>
+              <h3>WhatsApp</h3>
+              <p>
+                <a
+                  class="contact-link"
+                  href="https://wa.me/918276011939?text=Hi%20Subhankar%2C%20I%20would%20like%20to%20connect%20with%20you."
+                  target="_blank"
+                  rel="noopener"
                   >+91 8276011939</a
                 >
               </p>
@@ -419,12 +931,18 @@
           <div class="footer-section">
             <h3>Follow Me</h3>
             <div class="social-links">
-              <a href="https://github.com/sourav444-tec" title="GitHub"
-                ><i class="fab fa-github"></i
-              ></a>
               <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
               <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+              <a
+                href="https://wa.me/918276011939?text=Hi%20Subhankar%2C%20I%20would%20like%20to%20connect%20with%20you."
+                target="_blank"
+                rel="noopener"
+                title="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="mailto:dassubhankar8114@gmail.com" title="Email"
+                ><i class="fas fa-envelope"></i
+              ></a>
             </div>
           </div>
         </div>

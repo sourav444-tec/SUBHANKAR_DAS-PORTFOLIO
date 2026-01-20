@@ -1,4 +1,77 @@
 // ========================
+// DISABLE INSPECT & DEVELOPER TOOLS
+// ========================
+
+// Disable right-click context menu (except on links)
+document.addEventListener("contextmenu", (e) => {
+  // Allow right-click on links (a tags)
+  if (e.target.tagName === "A" || e.target.closest("a")) {
+    return true;
+  }
+  e.preventDefault();
+  return false;
+});
+
+// Disable keyboard shortcuts for developer tools
+document.addEventListener("keydown", (e) => {
+  // F12 - Open Developer Tools
+  if (e.key === "F12") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl+Shift+I (Windows/Linux) - Inspect Element
+  if (e.ctrlKey && e.shiftKey && e.key === "I") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl+Shift+J (Windows/Linux) - Console
+  if (e.ctrlKey && e.shiftKey && e.key === "J") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl+Shift+C (Windows/Linux) - Inspect Element picker
+  if (e.ctrlKey && e.shiftKey && e.key === "C") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Cmd+Option+I (Mac) - Inspect Element
+  if (e.metaKey && e.altKey && e.key === "i") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Cmd+Option+J (Mac) - Console
+  if (e.metaKey && e.altKey && e.key === "j") {
+    e.preventDefault();
+    return false;
+  }
+
+  // Cmd+Option+U (Mac) - View Source
+  if (e.metaKey && e.altKey && e.key === "u") {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// Detect if developer tools are open (optional - less aggressive version)
+const checkDevTools = () => {
+  const threshold = 160;
+  if (
+    window.outerHeight - window.innerHeight > threshold ||
+    window.outerWidth - window.innerWidth > threshold
+  ) {
+    console.warn("Developer tools detected - please close them");
+  }
+};
+
+// Only check once on load, not continuously
+window.addEventListener("load", checkDevTools);
+
+// ========================
 // NAVIGATION & HAMBURGER MENU
 // ========================
 
@@ -17,6 +90,218 @@ navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
+  });
+});
+
+// ========================
+// PROJECT MODALS (ALL PROJECTS)
+// ========================
+
+// Modal references
+const modals = {
+  wellness: {
+    modal: document.getElementById("wellnessModal"),
+    btn: document.getElementById("wellnessViewBtn"),
+  },
+  hrms: {
+    modal: document.getElementById("hrmsModal"),
+    btn: document.getElementById("hrmsViewBtn"),
+  },
+  recruitment: {
+    modal: document.getElementById("recruitmentModal"),
+    btn: document.getElementById("recruitmentViewBtn"),
+  },
+  analytics: {
+    modal: document.getElementById("analyticsModal"),
+    btn: document.getElementById("analyticsViewBtn"),
+  },
+  lms: {
+    modal: document.getElementById("lmsModal"),
+    btn: document.getElementById("lmsViewBtn"),
+  },
+  compliance: {
+    modal: document.getElementById("complianceModal"),
+    btn: document.getElementById("complianceViewBtn"),
+  },
+};
+
+// Function to open modal
+function openModal(modalObj) {
+  if (modalObj.modal) {
+    modalObj.modal.classList.add("active");
+  }
+}
+
+// Function to close modal
+function closeModal(modalObj) {
+  if (modalObj.modal) {
+    modalObj.modal.classList.remove("active");
+  }
+}
+
+// Add click handlers for all project buttons
+Object.values(modals).forEach(({ btn, modal }) => {
+  if (btn) {
+    btn.addEventListener("click", () => openModal({ modal }));
+  }
+
+  if (modal) {
+    // Close button inside modal
+    const closeBtn = modal.querySelector(".project-modal-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => closeModal({ modal }));
+    }
+
+    // Close button at footer
+    const closeFooterBtn = modal.querySelector(".project-modal-close-btn");
+    if (closeFooterBtn) {
+      closeFooterBtn.addEventListener("click", () => closeModal({ modal }));
+    }
+
+    // Close when clicking outside
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal({ modal });
+      }
+    });
+  }
+});
+
+// Close all modals with Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    Object.values(modals).forEach(({ modal }) => {
+      if (modal && modal.classList.contains("active")) {
+        closeModal({ modal });
+      }
+    });
+  }
+});
+
+// ========================
+// PROJECT MODAL (WELLNESS PROGRAM) - LEGACY
+// ========================
+
+const wellnessModal = modals.wellness.modal;
+const wellnessViewBtn = modals.wellness.btn;
+
+// Legacy compatibility - remove duplicates if any
+if (wellnessViewBtn) {
+  wellnessViewBtn.addEventListener("click", () => {
+    openModal(modals.wellness);
+  });
+}
+
+// ========================
+// EMAIL COMPOSE MODAL
+// ========================
+
+const emailModal = document.getElementById("emailModal");
+const emailComposeForm = document.getElementById("emailComposeForm");
+const emailModalClose = document.querySelector(".email-modal-close");
+const emailModalCancel = document.querySelector(".email-modal-cancel");
+
+// Function to open email modal
+function openEmailModal(e) {
+  const href = this.getAttribute("href");
+
+  // For email links, open the compose modal instead
+  if (href.startsWith("mailto:")) {
+    e.preventDefault();
+    emailModal.classList.add("active");
+
+    // Extract email from mailto link
+    const emailAddress = href.replace("mailto:", "");
+    document.getElementById("email-to").value = emailAddress;
+    document.getElementById("email-from").focus();
+  } else {
+    // For other links, allow normal behavior
+    return true;
+  }
+}
+
+// Function to close email modal
+function closeEmailModal() {
+  emailModal.classList.remove("active");
+  emailComposeForm.reset();
+}
+
+// Close modal when close button is clicked
+emailModalClose.addEventListener("click", closeEmailModal);
+
+// Close modal when cancel button is clicked
+emailModalCancel.addEventListener("click", closeEmailModal);
+
+// Close modal when clicking outside the modal content
+emailModal.addEventListener("click", (e) => {
+  if (e.target === emailModal) {
+    closeEmailModal();
+  }
+});
+
+// Handle email form submission
+emailComposeForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const from = document.getElementById("email-from").value;
+  const to = document.getElementById("email-to").value;
+  const subject = document.getElementById("email-subject").value;
+  const body = document.getElementById("email-body").value;
+
+  // Create mailto link with form data
+  const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=From: ${encodeURIComponent(from)}%0A%0A${encodeURIComponent(body)}`;
+
+  // Open the mail client
+  window.location.href = mailtoLink;
+
+  // Close modal after a short delay
+  setTimeout(() => {
+    closeEmailModal();
+  }, 500);
+});
+
+// ========================
+// CONTACT LINK INTERACTIONS
+// ========================
+
+// Add click handlers to contact links (email, phone, whatsapp)
+const contactLinks = document.querySelectorAll(".contact-link");
+
+contactLinks.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+
+    // Add animation
+    this.style.animation = "contactPulse 0.6s ease";
+    setTimeout(() => {
+      this.style.animation = "";
+    }, 600);
+
+    // For email links, open compose modal
+    if (href.startsWith("mailto:")) {
+      e.preventDefault();
+      openEmailModal.call(this, e);
+      return;
+    }
+
+    // For tel links, allow default behavior
+    if (href.startsWith("tel:")) {
+      return true;
+    }
+
+    // For other links (WhatsApp, etc.), allow default behavior
+  });
+
+  // Show tooltip on hover
+  link.addEventListener("mouseenter", function () {
+    const href = this.getAttribute("href");
+    if (href.startsWith("mailto:")) {
+      this.title = "Click to compose email";
+    } else if (href.startsWith("tel:")) {
+      this.title = "Click to call";
+    } else if (href.includes("wa.me")) {
+      this.title = "Click to chat on WhatsApp";
+    }
   });
 });
 
@@ -78,13 +363,13 @@ if (contactForm) {
     // Build mailto link
     const mailSubject = encodeURIComponent(`[Portfolio] ${subject}`);
     const mailBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nSent from portfolio contact form.`
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nSent from portfolio contact form.`,
     );
     const mailtoUrl = `mailto:${OWNER_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
 
     // Build WhatsApp link
     const waText = encodeURIComponent(
-      `New portfolio inquiry\nSubject: ${subject}\nFrom: ${name} (${email})\n\n${message}`
+      `New portfolio inquiry\nSubject: ${subject}\nFrom: ${name} (${email})\n\n${message}`,
     );
     const waUrl = `https://wa.me/${OWNER_WHATSAPP}?text=${waText}`;
 
@@ -96,7 +381,7 @@ if (contactForm) {
     } catch (err) {
       showNotification(
         "Could not open apps. Please contact via email/WhatsApp.",
-        "error"
+        "error",
       );
     }
 
@@ -285,11 +570,11 @@ document.addEventListener("keydown", (e) => {
 
 console.log(
   "%cWelcome to Subhankar Das' Portfolio!",
-  "color: #0066cc; font-size: 20px; font-weight: bold;"
+  "color: #0066cc; font-size: 20px; font-weight: bold;",
 );
 console.log(
   "%cLet's build something amazing together!",
-  "color: #00b4d8; font-size: 14px;"
+  "color: #00b4d8; font-size: 14px;",
 );
 
 // ========================
