@@ -69,6 +69,95 @@
       </div>
     </div>
 
+    <!-- Book a Call Modal -->
+    <div id="bookCallModal" class="book-call-modal">
+      <div class="book-call-modal-content">
+        <div class="book-call-modal-header">
+          <h2>Book a Call with Subhankar</h2>
+          <button class="book-call-modal-close">&times;</button>
+        </div>
+        <form id="bookCallForm" class="book-call-form">
+          <div class="book-call-form-group">
+            <label for="call-name">Full Name:</label>
+            <input
+              type="text"
+              id="call-name"
+              name="name"
+              placeholder="Your full name"
+              required
+            />
+          </div>
+          <div class="book-call-form-group">
+            <label for="call-email">Email:</label>
+            <input
+              type="email"
+              id="call-email"
+              name="email"
+              placeholder="Your email address"
+              required
+            />
+          </div>
+          <div class="book-call-form-group">
+            <label for="call-phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="call-phone"
+              name="phone"
+              placeholder="Your phone number"
+              required
+            />
+          </div>
+          <div class="book-call-form-group">
+            <label for="call-date">Preferred Date:</label>
+            <input type="date" id="call-date" name="date" required />
+          </div>
+          <div class="book-call-form-group">
+            <label for="call-time">Preferred Time:</label>
+            <select id="call-time" name="time" required>
+              <option value="">Select a time</option>
+              <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+              <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+              <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+              <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+              <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+              <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+              <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+              <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+            </select>
+          </div>
+          <div class="book-call-form-group">
+            <label for="call-topic">Topic of Discussion:</label>
+            <select id="call-topic" name="topic" required>
+              <option value="">Select a topic</option>
+              <option value="HR Consultation">HR Consultation</option>
+              <option value="Project Discussion">Project Discussion</option>
+              <option value="Career Advice">Career Advice</option>
+              <option value="Business Inquiry">Business Inquiry</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="book-call-form-group">
+            <label for="call-message">Additional Notes:</label>
+            <textarea
+              id="call-message"
+              name="message"
+              placeholder="Any additional information..."
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="book-call-modal-actions">
+            <button type="submit" class="btn btn-primary">Book Call</button>
+            <button
+              type="button"
+              class="btn btn-secondary book-call-modal-cancel"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <!-- Employee Wellness Program Modal -->
     <div id="wellnessModal" class="project-modal">
       <div class="project-modal-content">
@@ -548,6 +637,9 @@
           <div class="hero-buttons">
             <a href="#projects" class="btn btn-primary">View My Work</a>
             <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <button id="bookCallHeroBtn" class="btn btn-primary">
+              Book a Call
+            </button>
           </div>
         </div>
         <div class="hero-image">
@@ -705,7 +797,9 @@
                 <span>Candidate Management</span>
               </div>
               <div class="project-links">
-                <button class="link-btn" id="recruitmentViewBtn">View Details</button>
+                <button class="link-btn" id="recruitmentViewBtn">
+                  View Details
+                </button>
               </div>
             </div>
           </div>
@@ -727,7 +821,9 @@
                 <span>Data Insights</span>
               </div>
               <div class="project-links">
-                <button class="link-btn" id="analyticsViewBtn">View Details</button>
+                <button class="link-btn" id="analyticsViewBtn">
+                  View Details
+                </button>
               </div>
             </div>
           </div>
@@ -771,7 +867,9 @@
                 <span>Employee Engagement</span>
               </div>
               <div class="project-links">
-                <button class="link-btn" id="wellnessViewBtn">View Details</button>
+                <button class="link-btn" id="wellnessViewBtn">
+                  View Details
+                </button>
               </div>
             </div>
           </div>
@@ -793,11 +891,14 @@
                 <span>Regulations</span>
               </div>
               <div class="project-links">
-                <button class="link-btn" id="complianceViewBtn">View Details</button>
+                <button class="link-btn" id="complianceViewBtn">
+                  View Details
+                </button>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
@@ -905,7 +1006,19 @@
                 required
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div style="display: flex; gap: 10px">
+              <button type="submit" class="btn btn-primary" style="flex: 1">
+                Send Message
+              </button>
+              <button
+                type="button"
+                id="bookCallContactBtn"
+                class="btn btn-primary"
+                style="flex: 1"
+              >
+                Book a Call
+              </button>
+            </div>
           </form>
         </div>
       </div>

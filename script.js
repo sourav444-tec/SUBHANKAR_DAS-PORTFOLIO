@@ -261,6 +261,106 @@ emailComposeForm.addEventListener("submit", (e) => {
 });
 
 // ========================
+// BOOK A CALL MODAL
+// ========================
+
+const bookCallModal = document.getElementById("bookCallModal");
+const bookCallForm = document.getElementById("bookCallForm");
+const bookCallClose = document.querySelector(".book-call-modal-close");
+const bookCallCancel = document.querySelector(".book-call-modal-cancel");
+const bookCallHeroBtn = document.getElementById("bookCallHeroBtn");
+const bookCallContactBtn = document.getElementById("bookCallContactBtn");
+
+// Function to open book call modal
+function openBookCallModal() {
+  bookCallModal.classList.add("active");
+  bookCallForm.reset();
+}
+
+// Function to close book call modal
+function closeBookCallModal() {
+  bookCallModal.classList.remove("active");
+  bookCallForm.reset();
+}
+
+// Close modal when close button is clicked
+bookCallClose.addEventListener("click", closeBookCallModal);
+
+// Close modal when cancel button is clicked
+bookCallCancel.addEventListener("click", closeBookCallModal);
+
+// Close modal when clicking outside the modal content
+bookCallModal.addEventListener("click", (e) => {
+  if (e.target === bookCallModal) {
+    closeBookCallModal();
+  }
+});
+
+// Add event listeners to book call buttons
+if (bookCallHeroBtn) {
+  bookCallHeroBtn.addEventListener("click", openBookCallModal);
+}
+
+if (bookCallContactBtn) {
+  bookCallContactBtn.addEventListener("click", openBookCallModal);
+}
+
+// Handle book call form submission
+if (bookCallForm) {
+  bookCallForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("call-name").value.trim();
+    const email = document.getElementById("call-email").value.trim();
+    const phone = document.getElementById("call-phone").value.trim();
+    const date = document.getElementById("call-date").value;
+    const time = document.getElementById("call-time").value;
+    const topic = document.getElementById("call-topic").value.trim();
+    const notes = document.getElementById("call-notes").value.trim();
+
+    // Validate form
+    if (!name || !email || !phone || !date || !time || !topic) {
+      showNotification("Please fill in all required fields", "error");
+      return;
+    }
+
+    // Owner contact config
+    const OWNER_EMAIL = "dassubhankar8114@gmail.com";
+    const OWNER_WHATSAPP = "918276011939";
+
+    // Create email subject and body
+    const emailSubject = `Booking Call Request from ${name}`;
+    const emailBody = `Hello,\n\nI would like to book a call with you.\n\nDetails:\n- Name: ${name}\n- Email: ${email}\n- Phone: ${phone}\n- Preferred Date: ${date}\n- Preferred Time: ${time}\n- Topic: ${topic}\n- Additional Notes: ${notes}\n\nLooking forward to your response.\n\nBest regards,\n${name}`;
+
+    // Create WhatsApp message
+    const whatsappMessage = `Hi Subhankar, I would like to book a call with you.%0AName: ${encodeURIComponent(name)}%0AEmail: ${email}%0APhone: ${phone}%0APreferred Date: ${date}%0APreferred Time: ${time}%0ATopic: ${topic}%0AAdditional Notes: ${notes}`;
+
+    // Show notification
+    showNotification(
+      "Booking request sent! We will contact you soon.",
+      "success",
+    );
+
+    // Open WhatsApp with message
+    window.open(
+      `https://wa.me/${OWNER_WHATSAPP}?text=${whatsappMessage}`,
+      "_blank",
+    );
+
+    // Send email after a short delay
+    setTimeout(() => {
+      const mailtoLink = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      window.location.href = mailtoLink;
+    }, 500);
+
+    // Close modal after a short delay
+    setTimeout(() => {
+      closeBookCallModal();
+    }, 1000);
+  });
+}
+
+// ========================
 // CONTACT LINK INTERACTIONS
 // ========================
 
